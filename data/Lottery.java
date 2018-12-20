@@ -1,12 +1,23 @@
 class Lottery {
   public static void main(String[] args) {
-    int[] drawn = new int[6];
-    for (int i=0; i<drawn.length; i++) {
-      number = (int) Math.ceil(Math.random() * 59);
+    int[] allNumbers = new int[59];
+    for (int h=0; h<59; h++) {
+      allNumbers[h] = h+1;
     }
-    for (int j=0; j<drawn.length; j++) {
-      System.out.print(drawn[j] + "\t");
+    
+    for (int i=0; i<allNumbers.length; i++) {
+      int number = (int) Math.floor(Math.random() * 59);
+      int temp = allNumbers[i];
+      allNumbers[i] = allNumbers[number];
+      allNumbers[number] = temp;
     }
+
+    int j = 0;
+    while (j < 6) {
+      System.out.print(allNumbers[j] + "\t");
+      j++;
+    }
+
     System.out.println("\n");
   }
 }
